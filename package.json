@@ -27,7 +27,7 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "prettier" 
+      "prettier"
     ]
   },
   "browserslist": {
@@ -48,12 +48,7 @@
     "lint-staged": ">=10",
     "prettier": "2.2.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{js,css,ts,tsx, md}": "prettier --write"
+    "*.{js,css,md}": "prettier --write"
   }
 }
