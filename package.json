@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": ""
   },
   "eslintConfig": {
     "extends": [
@@ -53,8 +53,5 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,css,md,ts,tsx}": "prettier --write"
   }
 }
