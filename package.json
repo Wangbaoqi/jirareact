@@ -44,11 +44,17 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.3.0",
-    "husky": ">=6",
+    "husky": "^6.0.0",
     "lint-staged": ">=10",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick lint-staged"
+    }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,css,md,ts,tsx}": "prettier --write"
   }
 }
