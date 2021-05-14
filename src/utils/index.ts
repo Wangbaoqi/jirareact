@@ -35,6 +35,10 @@ const debounce = (func: () => void, delay: number) => {
 }
 
 
+export const useMount = (fn: () => void) => {
+  useEffect(fn, [])
+}
+
 
 export const useDebounce = <V>(value: V, delay: number) => {
 

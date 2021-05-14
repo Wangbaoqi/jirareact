@@ -7,6 +7,7 @@ import {List} from './list';
 import {Search} from './search-pane';
 
 import { cleanObject, useDebounce } from '../../utils/index'
+import { useHttp } from 'utils/http';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -23,26 +24,32 @@ export const ProjectIndex = () => {
 
   const [list, setList] = useState([])
 
+  const client = useHttp()
+
+
   const debounceParam = useDebounce(param, 200)
 
+ 
 
   useEffect(() => {
-    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debounceParam))}`).then(async res => {
 
-      if(res.ok) {
-        setList(await res.json())
-      }
-    })
+    client('projects', {
+      data: cleanObject(debounceParam)
+    }).then(setList)
+
+    // fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debounceParam))}`).then(async res => {
+
+    //   if(res.ok) {
+    //     setList(await res.json())
+    //   }
+    // })
   }, [debounceParam])
 
 
   useEffect(() => {
-    fetch(`${apiUrl}/users`).then(async res => {
 
-      if(res.ok) {
-        setUser(await res.json())
-      }
-    })
+    client('users').then(setUser)
+    
   }, [debounceParam])
 
 
