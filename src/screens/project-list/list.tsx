@@ -1,5 +1,6 @@
 
 
+import { Table } from 'antd'
 import React, { useRef } from 'react'
 import { User } from './search-pane'
 
@@ -24,24 +25,21 @@ export const List = ({
 
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>姓名</th>
-          <th>负责人</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          list.map((e, i) => (
-            <tr key={i}>
-              <td>{e.name}</td>
-              <td>{user.find(v => v.id === e.personId)?.name || 'none'}</td>
-            </tr>
-          ))
-        }
-      </tbody>
+    <Table pagination={false} columns={[{
+      title: 'name',
+      dataIndex: 'name',
+      sorter: (a, b) => a.name.localeCompare(b.name)
+    }, {
+      title: 'charge',
+      render(value, project) {
+        return (
+          <span>
+            {user.find(v => v.id === project.personId)?.name || 'none'}
+          </span>
+        )
+      }
+    }]} dataSource={list}>
 
-    </table>
+    </Table>
   )
 }

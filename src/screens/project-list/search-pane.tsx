@@ -1,3 +1,4 @@
+import { Input, Select } from 'antd'
 import React, { useRef } from 'react'
 
 
@@ -27,24 +28,24 @@ export const Search = ({
   return (
     <form>
       <div>
-        <input type="text" value={param.name} onChange={e => setParam({
+        <Input type="text" value={param.name} onChange={e => setParam({
           ...param,
           name: e.target.value
         })}  />
 
-        <select value={param.personId} onChange={e => setParam({
+        <Select value={param.personId} onChange={value => setParam({
           ...param,
-          personId: e.target.value
+          personId: value
         })}>
 
-          <option value="">负责人</option>
+          <Select.Option value="负责人">负责人</Select.Option>
 
           {
             user.map((e, i) => (
-              <option key={i} value={e.id}>{e.name}</option>
+              <Select.Option key={i} value={e.id}>{e.name}</Select.Option>
             ))
           }
-        </select>
+        </Select>
       </div>
     </form>
   )

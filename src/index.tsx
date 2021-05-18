@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AppProviders } from "./context/index";
 import {loadDevTools} from 'jira-dev-tool';
+import "./index.css";
+
+import "antd/dist/antd.less";
+
 
 
 loadDevTools(() => ReactDOM.render(

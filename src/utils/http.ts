@@ -47,5 +47,6 @@ export const useHttp = () => {
 
   const { user } = useAuth();
 
+  // Utility Types 联合类型
   return (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, {...config, token: user?.token})
 }
